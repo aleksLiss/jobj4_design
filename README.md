@@ -1,8 +1,5 @@
-#Job4j_design
-__
-
-What I will learn on this course:
-
+# Job4j_design
+## What I will learn on this course:
   1. Data structures and algorithms.
   2. Input/Output.
   3. SQL, JDBC.
