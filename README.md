@@ -1,5 +1,6 @@
-##Job4j_design
+#Job4j_design
 __
+
 What I will learn on this course:
 
   1. Data structures and algorithms.
