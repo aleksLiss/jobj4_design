@@ -1,6 +1,7 @@
 package ru.job4j.assertj;
 
 import org.junit.jupiter.api.Test;
+
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class NameLoadTest {
@@ -30,7 +31,7 @@ class NameLoadTest {
     }
 
     @Test
-    void checkValidateWhenNameStartsWithEqualSign(){
+    void checkValidateWhenNameStartsWithEqualSign() {
         NameLoad nameLoad = new NameLoad();
         String name = "=key1=value1";
         assertThatThrownBy(() -> nameLoad.parse(name))

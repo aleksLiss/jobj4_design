@@ -4,6 +4,7 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 public class NameLoad {
+
     private final Map<String, String> values = new HashMap<>();
 
     public void parse(String... names) {
