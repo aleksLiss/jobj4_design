@@ -28,14 +28,4 @@ public class MatrixIterator implements Iterator<Integer> {
         }
         return data[row][column++];
     }
-
-    public static void main(String[] args) {
-        int[][] input = {
-                {1}, {}, {}, {}, {2}
-        };
-        MatrixIterator iterator = new MatrixIterator(input);
-        System.out.println(iterator.next());
-        System.out.println(iterator.next());
-        System.out.println(iterator.next());
-    }
 }
