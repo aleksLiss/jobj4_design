@@ -8,6 +8,7 @@ import org.junit.jupiter.api.Test;
 import java.util.*;
 
 class EvenNumbersIteratorTest {
+
     private Iterator<Integer> iterator;
 
     @BeforeEach
