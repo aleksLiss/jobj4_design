@@ -15,7 +15,7 @@ public class CyclicIterator<T> implements Iterator<T> {
 
     @Override
     public boolean hasNext() {
-        return data.size() == 0 ? false : indexLessThenSize() ? indexLessThenSize() : indexToZero();
+        return data.size() > 0;
     };
 
     @Override
@@ -23,15 +23,9 @@ public class CyclicIterator<T> implements Iterator<T> {
         if (!hasNext()) {
             throw new NoSuchElementException();
         }
+        if (index == data.size()) {
+            index = 0;
+        }
         return data.get(index++);
-    }
-
-    private boolean indexLessThenSize() {
-        return index < data.size();
-    }
-
-    private boolean indexToZero() {
-        index = 0;
-        return true;
     }
 }
