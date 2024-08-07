@@ -30,10 +30,8 @@ public class SimpleLinkedList<E> implements SimpleLinked<E> {
     public E get(int index) {
         Objects.checkIndex(index, size);
         Node next = head;
-        int counter = 0;
-        while (counter != index) {
+        for (int counter = 0; counter < index; counter++) {
             next = next.next;
-            counter++;
         }
         return (E) next.getItem();
     }
