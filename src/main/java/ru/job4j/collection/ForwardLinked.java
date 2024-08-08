@@ -10,6 +10,7 @@ public class ForwardLinked<T> implements Iterable<T> {
     private int modCount;
     private Node<T> head;
 
+
     public void add(T value) {
         if (head == null) {
             head = new ForwardLinked.Node<>(value, null);
@@ -45,7 +46,13 @@ public class ForwardLinked<T> implements Iterable<T> {
         }
         deleted.next = null;
         deleted.item = null;
+        size--;
+        modCount++;
         return item;
+    }
+
+    public int getSize() {
+        return size;
     }
 
     @Override
