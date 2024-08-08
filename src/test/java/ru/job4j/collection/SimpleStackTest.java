@@ -9,6 +9,7 @@ import org.junit.jupiter.api.Test;
 import java.util.NoSuchElementException;
 
 class SimpleStackTest {
+
     private SimpleStack<Integer> stack;
 
     @BeforeEach
