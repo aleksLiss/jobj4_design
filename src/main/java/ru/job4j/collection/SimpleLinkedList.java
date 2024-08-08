@@ -29,18 +29,18 @@ public class SimpleLinkedList<E> implements SimpleLinked<E> {
     @Override
     public E get(int index) {
         Objects.checkIndex(index, size);
-        Node next = head;
+        Node<E> next = head;
         for (int counter = 0; counter < index; counter++) {
             next = next.next;
         }
-        return (E) next.getItem();
+        return next.getItem();
     }
 
     @Override
     public Iterator<E> iterator() {
         return new Iterator<E>() {
             private final int expectedModCount = modCount;
-            private Node currentNode = head;
+            private Node<E> currentNode = head;
 
             @Override
             public boolean hasNext() {
@@ -55,7 +55,7 @@ public class SimpleLinkedList<E> implements SimpleLinked<E> {
                 if (!hasNext()) {
                     throw new NoSuchElementException();
                 }
-                E val = (E) currentNode.item;
+                E val = currentNode.item;
                 currentNode = currentNode.next;
                 return val;
             }
