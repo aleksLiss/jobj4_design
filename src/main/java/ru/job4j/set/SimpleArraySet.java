@@ -1,6 +1,7 @@
 package ru.job4j.set;
 
 import ru.job4j.collection.SimpleArrayList;
+
 import java.util.*;
 
 
@@ -34,7 +35,4 @@ public class SimpleArraySet<T> implements SimpleSet<T> {
         return set.iterator();
     }
 
-    public T getFrom(int index) {
-        return set.get(index);
-    }
 }
