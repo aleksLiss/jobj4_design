@@ -96,7 +96,7 @@ public class NonCollisionMap<K, V> implements SimpleMap<K, V> {
     }
 
     private boolean isEqualsHashCodesOfKeys(K key, K entryKey) {
-        return Objects.equals(key, entryKey);
+        return Objects.hashCode(key) != Objects.hashCode(entryKey) || Objects.equals(key, entryKey);
     }
 
     private void expand() {
