@@ -15,7 +15,7 @@ public class NonCollisionMap<K, V> implements SimpleMap<K, V> {
         if (count >= capacity * LOAD_FACTOR) {
             expand();
         }
-        int index = indexFor(hash(Objects.hashCode(key)));
+        int index = getIndex(key);
         int currentCount = count;
         if (table[index] == null) {
             table[index] = new MapEntry<>(key, value);
@@ -27,11 +27,11 @@ public class NonCollisionMap<K, V> implements SimpleMap<K, V> {
 
     @Override
     public V get(K key) {
-        int index = indexFor(hash(Objects.hashCode(key)));
+        int index = getIndex(key);
         MapEntry<K, V> entry = table[index];
         return Objects.hashCode(entry) == 0
                 ? null
-                : Objects.hashCode(key) != Objects.hashCode(entry.key)
+                : !isEqualsHashCodesOfKeys(key, entry.key)
                 ? null
                 : !Objects.equals(key, entry.key)
                 ? null
@@ -40,10 +40,10 @@ public class NonCollisionMap<K, V> implements SimpleMap<K, V> {
 
     @Override
     public boolean remove(K key) {
-        int index = indexFor(hash(Objects.hashCode(key)));
+        int index = getIndex(key);
         MapEntry<K, V> entry = table[index];
         int currentCount = count;
-        if (entry != null && Objects.hashCode(key) == Objects.hashCode(entry.key)) {
+        if (entry != null && isEqualsHashCodesOfKeys(key, entry.key)) {
             if (Objects.equals(key, entry.key)) {
                 table[index] = null;
                 modCount++;
@@ -55,7 +55,7 @@ public class NonCollisionMap<K, V> implements SimpleMap<K, V> {
 
     @Override
     public Iterator<K> iterator() {
-        return new Iterator<K>() {
+        return new Iterator<>() {
             private int index = 0;
             private int expectedModCount = modCount;
 
@@ -91,12 +91,20 @@ public class NonCollisionMap<K, V> implements SimpleMap<K, V> {
         return hash & capacity - 1;
     }
 
+    private int getIndex(K key) {
+        return indexFor(hash(Objects.hashCode(key)));
+    }
+
+    private boolean isEqualsHashCodesOfKeys(K key, K entryKey) {
+        return Objects.hashCode(key) == Objects.hashCode(entryKey);
+    }
+
     private void expand() {
         capacity *= 2;
         MapEntry<K, V>[] newTable = new MapEntry[capacity];
         for (MapEntry entry : table) {
             if (entry != null) {
-                int index = indexFor(hash(Objects.hashCode(entry.key)));
+                int index = getIndex((K) entry.key);
                 if (newTable[index] == null) {
                     newTable[index] = entry;
                 }
