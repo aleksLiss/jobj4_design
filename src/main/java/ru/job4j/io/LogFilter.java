@@ -2,9 +2,7 @@ package ru.job4j.io;
 
 import java.io.*;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class LogFilter {
     private final String file;
@@ -19,7 +17,7 @@ public class LogFilter {
             reader.lines()
                     .map(str -> str.split(" "))
                     .filter(strings -> strings[strings.length - 2].contains("404"))
-                    .map(Arrays::toString)
+                    .map(i -> String.join(" ", i))
                     .forEach(i -> result.add((i + System.lineSeparator())));
         } catch (IOException ex) {
             ex.printStackTrace();
@@ -30,7 +28,8 @@ public class LogFilter {
     public void saveTo(String out) {
         var data = filter();
         try (PrintWriter writer = new PrintWriter(new BufferedOutputStream(new FileOutputStream(out)))) {
-            writer.println(data);
+            data.stream()
+                    .forEach(writer::print);
         } catch (IOException ex) {
             ex.printStackTrace();
         }
