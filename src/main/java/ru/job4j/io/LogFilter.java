@@ -6,7 +6,6 @@ import java.util.List;
 
 public class LogFilter {
     private final String file;
-
     public LogFilter(String file) {
         this.file = file;
     }
