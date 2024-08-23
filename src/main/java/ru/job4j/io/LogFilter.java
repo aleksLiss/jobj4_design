@@ -2,6 +2,7 @@ package ru.job4j.io;
 
 import java.io.*;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -15,10 +16,11 @@ public class LogFilter {
     public List<String> filter() {
         List<String> result = new ArrayList<>();
         try (BufferedReader reader = new BufferedReader(new FileReader(("data/log.txt")))) {
-            result = reader.lines()
-                    .filter(str -> str.contains(" 404 "))
-                    .map(i -> i.concat(System.lineSeparator()))
-                    .collect(Collectors.toList());
+            reader.lines()
+                    .map(str -> str.split(" "))
+                    .filter(strings -> strings[strings.length - 2].contains("404"))
+                    .map(Arrays::toString)
+                    .forEach(i -> result.add((i + System.lineSeparator())));
         } catch (IOException ex) {
             ex.printStackTrace();
         }
