@@ -2,6 +2,7 @@ package ru.job4j.io;
 
 import java.io.*;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class LogFilter {
@@ -13,11 +14,13 @@ public class LogFilter {
     public List<String> filter() {
         List<String> result = new ArrayList<>();
         try (BufferedReader reader = new BufferedReader(new FileReader(("data/log.txt")))) {
-            reader.lines()
-                    .map(str -> str.split(" "))
-                    .filter(strings -> strings[strings.length - 2].contains("404"))
-                    .map(i -> String.join(" ", i))
-                    .forEach(i -> result.add((i + System.lineSeparator())));
+            String read;
+            while ((read = reader.readLine()) != null) {
+                String[] arrayReadLine = read.split(" ");
+                if ("404".equals(arrayReadLine[arrayReadLine.length - 2])) {
+                    result.add(read + System.lineSeparator());
+                }
+            }
         } catch (IOException ex) {
             ex.printStackTrace();
         }
@@ -27,8 +30,7 @@ public class LogFilter {
     public void saveTo(String out) {
         var data = filter();
         try (PrintWriter writer = new PrintWriter(new BufferedOutputStream(new FileOutputStream(out)))) {
-            data.stream()
-                    .forEach(writer::print);
+            writer.print(data);
         } catch (IOException ex) {
             ex.printStackTrace();
         }
