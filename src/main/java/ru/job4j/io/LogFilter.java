@@ -30,7 +30,9 @@ public class LogFilter {
     public void saveTo(String out) {
         var data = filter();
         try (PrintWriter writer = new PrintWriter(new BufferedOutputStream(new FileOutputStream(out)))) {
-            writer.print(data);
+            for (String line : data) {
+                writer.println(line);
+            }
         } catch (IOException ex) {
             ex.printStackTrace();
         }
