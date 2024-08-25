@@ -2,11 +2,11 @@ package ru.job4j.io;
 
 import java.io.*;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 public class LogFilter {
     private final String file;
+
     public LogFilter(String file) {
         this.file = file;
     }
