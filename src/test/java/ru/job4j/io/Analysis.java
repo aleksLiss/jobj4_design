@@ -8,7 +8,7 @@ public class Analysis {
              BufferedWriter writer = new BufferedWriter(new FileWriter(target))) {
             String readLine;
             boolean badFlag = false;
-            String result = "";
+            StringBuilder result = new StringBuilder();
             String formatSourceFile = source.split("\\.")[1]
                     + System.lineSeparator()
                     + System.lineSeparator();
@@ -16,14 +16,13 @@ public class Analysis {
             while ((readLine = reader.readLine()) != null) {
                 String[] arr = readLine.split(" ");
                 if (("400".equals(arr[0]) || "500".equals(arr[0])) && !badFlag) {
-                    result += arr[1] + ";";
+                    result.append(arr[1]).append(";");
                     badFlag = true;
                 }
                 if (("200".equals(arr[0]) || "300".equals(arr[0])) && badFlag) {
-                    result += arr[1] + ";";
-                    result += System.lineSeparator();
-                    writer.write(result);
-                    result = "";
+                    result.append(arr[1]).append(";").append(System.lineSeparator());
+                    writer.write(result.toString());
+                    result = new StringBuilder();
                     badFlag = false;
                 }
             }
