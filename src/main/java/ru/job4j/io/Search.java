@@ -22,14 +22,14 @@ public class Search {
     }
 
     private static boolean checkArguments(String[] args) {
-        if (args.length == 0) {
-            throw new IllegalArgumentException();
+        if (args.length != 2) {
+            throw new IllegalArgumentException("Error: count of arguments must be two");
         }
         if (!".".equals(args[0])) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("Error: first argument must be root directory");
         }
         if (!args[1].startsWith(".")) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("Error: second argument must contains file extension");
         }
         return true;
     }
