@@ -21,13 +21,13 @@ public class ConsoleChat {
         Random randomIndexBotAnswer = new Random();
         System.out.println("Начните беседу: ");
         String userAnswer = new Scanner(System.in).nextLine();
-        while (!userAnswer.equals(OUT)) {
+        while (!OUT.equals(userAnswer)) {
             List<String> chat = new ArrayList<>();
             chat.add(userAnswer);
-            if (userAnswer.equals(STOP)) {
+            if (STOP.equals(userAnswer)) {
                 isStoppedBot = true;
             }
-            if (userAnswer.equals(CONTINUE)) {
+            if (CONTINUE.equals(userAnswer)) {
                 isStoppedBot = false;
             }
             if (!isStoppedBot) {
