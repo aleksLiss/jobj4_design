@@ -56,7 +56,7 @@ public class ArgsName {
             throw new IllegalArgumentException(String.format("Error: This argument '%s' does not contain a key", arg));
         }
         String val = arg.split("=", 2)[1];
-        if (val.length() < 2) {
+        if (val.isEmpty()) {
             throw new IllegalArgumentException(String.format("Error: This argument '%s' does not contain a value", arg));
         }
         return true;
