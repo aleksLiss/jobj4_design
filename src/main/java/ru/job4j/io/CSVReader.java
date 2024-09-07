@@ -56,17 +56,17 @@ public class CSVReader {
     private static void checkArgs(String key, String arg) {
         switch (key) {
             case "path":
-                if (!arg.contains(".csv")) {
+                if (!".csv".contains(arg)) {
                     throw new IllegalArgumentException("Error: file for read must has '.csv' extension");
                 }
                 break;
             case "delimiter":
-                if (!arg.equals(";")) {
+                if (!";".equals(arg)) {
                     throw new IllegalArgumentException("Error: delimiter must be ';'");
                 }
                 break;
             case "out":
-                if (!arg.equals("stdout")) {
+                if (!"stdout".equals(arg)) {
                     throw new IllegalArgumentException("Error: output information must be stdout");
                 }
                 break;
