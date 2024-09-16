@@ -1,9 +1,26 @@
 package ru.job4j.serialization.xml;
 
+
+import jakarta.xml.bind.JAXBContext;
+import jakarta.xml.bind.JAXBException;
+import jakarta.xml.bind.Marshaller;
+import jakarta.xml.bind.annotation.*;
+
+import java.io.StringWriter;
+
+@XmlRootElement(name = "person")
+@XmlAccessorType(XmlAccessType.FIELD)
 public class Person {
-    private final String name;
-    private final int age;
-    private final Address address;
+
+    @XmlAttribute
+    private String name;
+    @XmlAttribute
+    private int age;
+    @XmlElement
+    private Address address;
+
+    public Person() {
+    }
 
     public Person(String name, int age, Address address) {
         this.name = name;
@@ -23,9 +40,19 @@ public class Person {
                 + '}';
     }
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws JAXBException {
         final Person person = new Person("Jack", 43,
                 new Address("Crosby Street", 12, 3));
-        System.out.println(person);
+        JAXBContext context = JAXBContext.newInstance(Person.class);
+        Marshaller marshaller = context.createMarshaller();
+        marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, Boolean.TRUE);
+
+        try (StringWriter writer = new StringWriter()) {
+            marshaller.marshal(person, writer);
+            String result = writer.getBuffer().toString();
+            System.out.println(result);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }

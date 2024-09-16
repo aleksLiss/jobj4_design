@@ -1,10 +1,21 @@
 package ru.job4j.serialization.xml;
 
+
+import jakarta.xml.bind.annotation.XmlAttribute;
+import jakarta.xml.bind.annotation.XmlRootElement;
+
+@XmlRootElement(name = "contact")
 public class Address {
 
-    private final String street;
-    private final int number;
-    private final int floor;
+    @XmlAttribute
+    private String street;
+    @XmlAttribute
+    private int number;
+    @XmlAttribute
+    private int floor;
+
+    public Address() {
+    }
 
     public Address(String street, int number, int floor) {
         this.street = street;
