@@ -17,6 +17,25 @@ public class Cat {
         this.son = son;
     }
 
+    public String getName() {
+        return name;
+    }
+
+    public int getAge() {
+        return age;
+    }
+
+    public boolean isHasChild() {
+        return hasChild;
+    }
+
+    public String[] getChildNames() {
+        return childNames;
+    }
+
+    public Kitty getSon() {
+        return son;
+    }
 
     @Override
     public String toString() {
