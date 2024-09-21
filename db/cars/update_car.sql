@@ -1,0 +1,1 @@
+update cars set name = 'Lada', speed = 150, price = 12300.50, has_owner = false, country = 'Russia';
