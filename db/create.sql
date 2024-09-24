@@ -16,12 +16,14 @@ create table rules(
 
 create table coments(
 	id serial primary key,
-	name text 
+	name text,
+	item_id int references item(id)
 );
 
 create table attachs(
 	id serial primary key,
-	name varchar(255)
+	name varchar(255),
+	item_id int references item(id)
 );
 
 create table states(
@@ -38,10 +40,8 @@ create table items(
 	id serial primary key,
 	name varchar(50),
 	user_id int references users(id),
-	coments_id int references coments(id),
 	categories_id int references categories(id),
-	state_id int references states(id),
-	attach_id int references attachs(id)
+	state_id int references states(id)
 );
 
 create table roles_rules(
