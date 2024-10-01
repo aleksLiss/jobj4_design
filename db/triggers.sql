@@ -7,7 +7,19 @@ create table products
     price    integer
 );
 
-create or replace function get_tax() 
+create or replace function get_tax_after() 
+returns trigger as 
+$$
+	BEGIN
+		update products
+		set price = price + (price * 0.2);
+		RETURN NEW;
+	END;
+$$
+LANGUAGE 'plpgsql';
+
+
+create or replace function get_tax_before() 
 returns trigger as 
 $$
 	BEGIN
@@ -17,15 +29,15 @@ $$
 $$
 LANGUAGE 'plpgsql';
 
-create trigger tax_trigger
+create trigger tax_after_trigger
 after insert on products
 for each statement
-execute procedure get_tax();
+execute procedure get_tax_after();
 
 create trigger tax_before_trigger
 before insert on products 
 for each row
-execute procedure get_tax();
+execute procedure get_tax_before();
 
 create table history_of_price
 (
