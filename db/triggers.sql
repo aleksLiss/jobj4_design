@@ -11,9 +11,8 @@ create or replace function get_tax()
 returns trigger as 
 $$
 	BEGIN
-	update products
-	set price = price + (price * 0.2);
-	RETURN NEW;
+		NEW.price := NEW.price + (NEW.price * 0.2);
+		RETURN NEW;
 	END;
 $$
 LANGUAGE 'plpgsql';
@@ -24,7 +23,7 @@ for each statement
 execute procedure get_tax();
 
 create trigger tax_before_trigger
-before insert on products
+before insert on products 
 for each row
 execute procedure get_tax();
 
@@ -51,3 +50,5 @@ create trigger add_to_history_of_price
 after insert on products
 for each row
 execute procedure add_to_table();
+
+
