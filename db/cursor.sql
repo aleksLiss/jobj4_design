@@ -59,5 +59,5 @@ fetch next from cp;
 move backward 6 from cp;
 fetch next from cp;
 fetch prior from cp;
-
+close cp;
 commit;
