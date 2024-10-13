@@ -88,23 +88,26 @@ public class TableEditor implements AutoCloseable {
         }
     }
 
-    public static void main(String[] args) throws Exception {
+    private void runEditor(String tableName, String oldCol, String newCol, String type) {
         try (TableEditor editor = new TableEditor(new Properties())) {
-            String tableName = "employees";
-            String oldColumn = "name";
-            String newColumn = "emp_name";
-            String type = "text";
             editor.createTable(tableName);
             System.out.println(editor.getTableScheme(tableName));
-            editor.addColumn(tableName, oldColumn, type);
+            editor.addColumn(tableName, oldCol, type);
             System.out.println(editor.getTableScheme(tableName));
-            editor.renameColumn(tableName, oldColumn, newColumn);
+            editor.renameColumn(tableName, oldCol, newCol);
             System.out.println(editor.getTableScheme(tableName));
-            editor.dropColumn(tableName, newColumn);
+            editor.dropColumn(tableName, newCol);
             System.out.println(editor.getTableScheme(tableName));
             editor.dropTable(tableName);
             System.out.println(editor.getTableScheme(tableName));
+        } catch (Exception ex) {
+            ex.printStackTrace();
         }
+    }
+
+    public static void main(String[] args) throws Exception {
+        TableEditor editor = new TableEditor(new Properties());
+        editor.runEditor("employees", "name", "emp_name", "text");
     }
 
     public String getTableScheme(String tableName) throws Exception {
