@@ -37,72 +37,54 @@ public class TableEditor implements AutoCloseable {
         }
     }
 
-    public void createTable(String tableName) throws Exception {
-        try (Statement statement = connection.createStatement()) {
-            String sql = String.format(
-                    "CREATE TABLE IF NOT EXISTS %s();",
-                    tableName
-            );
-            statement.execute(sql);
-        } catch (SQLException ex) {
-            ex.printStackTrace();
+    private void runStatement(String sqlQuery, String tableName, String oldColumn, String type, String newColumn) {
+        if (sqlQuery.startsWith("CREATE") || sqlQuery.startsWith("DROP")) {
+            try (Statement statement = connection.createStatement()) {
+                String sql = String.format(
+                        sqlQuery,
+                        tableName
+                );
+                statement.execute(sql);
+            } catch (SQLException ex) {
+                ex.printStackTrace();
+            }
         }
+        if (sqlQuery.startsWith("ALTER")) {
+            try (Statement statement = connection.createStatement()) {
+                String sql = String.format(
+                        sqlQuery,
+                        tableName
+                );
+                statement.execute(sql);
+            } catch (SQLException ex) {
+                ex.printStackTrace();
+            }
+        }
+    }
+
+    public void createTable(String tableName) throws Exception {
+        String sql = "CREATE TABLE IF NOT EXISTS %s();";
+        runStatement(sql, tableName, "", "", "");
     }
 
     public void dropTable(String tableName) {
-        try (Statement statement = connection.createStatement()) {
-            String sql = String.format("DROP TABLE %s;", tableName);
-            statement.execute(sql);
-        } catch (SQLException ex) {
-            ex.printStackTrace();
-        }
+        String sql = "DROP TABLE %s;";
+        runStatement(sql, tableName, "", "", "");
     }
 
     public void addColumn(String tableName, String columnName, String type) {
-        try (Statement statement = connection.createStatement()) {
-            String sql = String.format("ALTER TABLE %s ADD COLUMN %s %s;",
-                    tableName, columnName, type);
-            statement.execute(sql);
-        } catch (SQLException ex) {
-            ex.printStackTrace();
-        }
+        String sql = "ALTER TABLE %s ADD COLUMN %s %s;";
+        runStatement(sql, tableName, columnName, type, "");
     }
 
     public void dropColumn(String tableName, String columnName) {
-        try (Statement statement = connection.createStatement()) {
-            String sql = String.format("ALTER TABLE %s DROP COLUMN %s;",
-                    tableName, columnName);
-            statement.execute(sql);
-        } catch (SQLException ex) {
-            ex.printStackTrace();
-        }
+        String sql = "ALTER TABLE %s DROP COLUMN %s;";
+        runStatement(sql, tableName, columnName, "", "");
     }
 
     public void renameColumn(String tableName, String columnName, String newColumnName) {
-        try (Statement statement = connection.createStatement()) {
-            String sql = String.format("ALTER TABLE %s RENAME COLUMN %s TO %s;",
-                    tableName, columnName, newColumnName);
-            statement.execute(sql);
-        } catch (SQLException ex) {
-            ex.printStackTrace();
-        }
-    }
-
-    private void runEditor(String tableName, String oldCol, String newCol, String type) {
-        try (TableEditor editor = new TableEditor(new Properties())) {
-            editor.createTable(tableName);
-            System.out.println(editor.getTableScheme(tableName));
-            editor.addColumn(tableName, oldCol, type);
-            System.out.println(editor.getTableScheme(tableName));
-            editor.renameColumn(tableName, oldCol, newCol);
-            System.out.println(editor.getTableScheme(tableName));
-            editor.dropColumn(tableName, newCol);
-            System.out.println(editor.getTableScheme(tableName));
-            editor.dropTable(tableName);
-            System.out.println(editor.getTableScheme(tableName));
-        } catch (Exception ex) {
-            ex.printStackTrace();
-        }
+        String sql = "ALTER TABLE %s RENAME COLUMN %s TO %s;";
+        runStatement(sql, tableName, columnName, "", newColumnName);
     }
 
     public static void main(String[] args) throws Exception {
@@ -127,6 +109,23 @@ public class TableEditor implements AutoCloseable {
             }
         }
         return buffer.toString();
+    }
+
+    private void runEditor(String tableName, String oldCol, String newCol, String type) {
+        try (TableEditor editor = new TableEditor(new Properties())) {
+            editor.createTable(tableName);
+            System.out.println(editor.getTableScheme(tableName));
+            editor.addColumn(tableName, oldCol, type);
+            System.out.println(editor.getTableScheme(tableName));
+            editor.renameColumn(tableName, oldCol, newCol);
+            System.out.println(editor.getTableScheme(tableName));
+            editor.dropColumn(tableName, newCol);
+            System.out.println(editor.getTableScheme(tableName));
+            editor.dropTable(tableName);
+            System.out.println(editor.getTableScheme(tableName));
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
     }
 
     @Override
