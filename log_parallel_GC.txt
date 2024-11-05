@@ -1,0 +1,55 @@
+[2024-11-05T20:39:13.482+0300][info][gc] Using Parallel
+[2024-11-05T20:39:17.743+0300][info][gc] GC(0) Pause Young (Allocation Failure) 4M->2M(11M) 1,923ms
+[2024-11-05T20:39:17.788+0300][info][gc] GC(1) Pause Young (Allocation Failure) 5M->3M(11M) 1,305ms
+[2024-11-05T20:39:17.837+0300][info][gc] GC(2) Pause Young (Allocation Failure) 6M->3M(11M) 1,094ms
+[2024-11-05T20:39:17.868+0300][info][gc] GC(3) Pause Young (Allocation Failure) 6M->4M(11M) 1,722ms
+[2024-11-05T20:39:17.887+0300][info][gc] GC(4) Pause Young (Allocation Failure) 7M->5M(11M) 1,801ms
+[2024-11-05T20:39:18.000+0300][info][gc] GC(5) Pause Young (Allocation Failure) 8M->7M(10M) 1,763ms
+[2024-11-05T20:39:18.044+0300][info][gc] GC(6) Pause Full (Ergonomics) 9M->4M(11M) 10,554ms
+[2024-11-05T20:39:18.064+0300][info][gc] GC(7) Pause Young (Allocation Failure) 6M->4M(11M) 0,695ms
+[2024-11-05T20:39:18.154+0300][info][gc] GC(8) Pause Young (Allocation Failure) 6M->5M(11M) 1,610ms
+[2024-11-05T20:39:18.227+0300][info][gc] GC(9) Pause Young (Allocation Failure) 7M->5M(11M) 1,583ms
+[2024-11-05T20:39:26.955+0300][info][gc] GC(10) Pause Young (Allocation Failure) 7M->5M(11M) 2,235ms
+
+[2024-11-05T20:39:30.289+0300][info][gc] GC(11) Pause Young (Allocation Failure) 7M->6M(11M) 1,038ms
+[2024-11-05T20:39:30.312+0300][info][gc] GC(12) Pause Full (Ergonomics) 8M->6M(11M) 20,426ms
+[2024-11-05T20:39:30.323+0300][info][gc] GC(13) Pause Full (Ergonomics) 8M->6M(11M) 8,538ms
+[2024-11-05T20:39:30.332+0300][info][gc] GC(14) Pause Full (Ergonomics) 8M->6M(11M) 7,590ms
+[2024-11-05T20:39:30.342+0300][info][gc] GC(15) Pause Full (Ergonomics) 8M->6M(11M) 7,248ms
+[2024-11-05T20:39:30.350+0300][info][gc] GC(16) Pause Full (Ergonomics) 8M->6M(11M) 6,466ms
+[2024-11-05T20:39:30.359+0300][info][gc] GC(17) Pause Full (Ergonomics) 8M->6M(11M) 7,085ms
+[2024-11-05T20:39:30.366+0300][info][gc] GC(18) Pause Full (Ergonomics) 8M->6M(11M) 5,982ms
+[2024-11-05T20:39:30.375+0300][info][gc] GC(19) Pause Full (Ergonomics) 8M->6M(11M) 7,054ms
+[2024-11-05T20:39:30.383+0300][info][gc] GC(20) Pause Full (Ergonomics) 8M->6M(11M) 6,369ms
+[2024-11-05T20:39:30.391+0300][info][gc] GC(21) Pause Full (Ergonomics) 8M->7M(11M) 6,375ms
+[2024-11-05T20:39:30.401+0300][info][gc] GC(22) Pause Full (Ergonomics) 9M->7M(11M) 7,252ms
+[2024-11-05T20:39:30.409+0300][info][gc] GC(23) Pause Full (Ergonomics) 9M->7M(11M) 6,334ms
+[2024-11-05T20:39:30.418+0300][info][gc] GC(24) Pause Full (Ergonomics) 9M->7M(11M) 6,999ms
+[2024-11-05T20:39:30.427+0300][info][gc] GC(25) Pause Full (Ergonomics) 8M->7M(11M) 6,746ms
+
+[2024-11-05T20:39:34.939+0300][info][gc] GC(26) Pause Full (Ergonomics) 8M->5M(11M) 9,288ms
+
+[2024-11-05T20:39:42.073+0300][info][gc] GC(27) Pause Young (Allocation Failure) 7M->5M(11M) 0,762ms
+[2024-11-05T20:39:52.248+0300][info][gc] GC(28) Pause Young (Allocation Failure) 7M->6M(11M) 0,499ms
+[2024-11-05T20:40:12.248+0300][info][gc] GC(29) Pause Young (Allocation Failure) 8M->6M(11M) 0,485ms
+[2024-11-05T20:40:32.322+0300][info][gc] GC(30) Pause Full (Ergonomics) 8M->6M(11M) 11,517ms
+[2024-11-05T20:40:54.335+0300][info][gc] GC(31) Pause Full (Ergonomics) 8M->6M(11M) 9,390ms
+
+При использовании сортировки слиянием с 20:39:30 по 20:39:31 производилась major GC в количестве 14 шт.
+
+При использовании сортировки вставками с 20:39:34 по 20:39:38 производилась major GC в количестве 1 шт.
+
+При использовании сортировки пузырьком с 20:39:42 по 20:40:57 производилась major GC в количестве 2 шт, minor GC
+в количестве 3 шт.
+
+Итог: в зависимости от сложности алгоритма по Big O, по разному используется Heap и проводится разное количество и вид
+сборок мусора.
+
+Сортировка слиянием: лучшее время работы, но при выполнении алгоритма произошло кратковременное увеличение объема
+используемого хипа. Так же выполнилась major GC: суммарное время выполнения около 115 мс.
+
+Сортировка вставками: время выполнения между сортировки слиянием и пузырьковой сортировкой. В процессе проведения
+производилась одиночная major GC: время выполнения 9.3 ms, освобожденная память - 3 mb.
+
+Сортировка пузырьком: время выполнения наихудшее. При выполнении данного алгоритма сортировки отмечается равномерное
+(циклами) заполнение хипа и его очистка.

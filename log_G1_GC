@@ -1,0 +1,104 @@
+[2024-11-05T20:35:21.172+0300][info][gc] Using G1
+[2024-11-05T20:35:25.537+0300][info][gc] GC(0) Pause Young (Normal) (G1 Evacuation Pause) 6M->3M(12M) 2,123ms
+[2024-11-05T20:35:25.550+0300][info][gc] GC(1) Pause Young (Normal) (G1 Evacuation Pause) 4M->3M(12M) 1,639ms
+[2024-11-05T20:35:25.584+0300][info][gc] GC(2) Pause Young (Normal) (G1 Evacuation Pause) 5M->3M(12M) 0,894ms
+[2024-11-05T20:35:25.619+0300][info][gc] GC(3) Pause Young (Normal) (G1 Evacuation Pause) 5M->3M(12M) 1,442ms
+[2024-11-05T20:35:25.646+0300][info][gc] GC(4) Pause Young (Normal) (G1 Evacuation Pause) 6M->4M(12M) 2,002ms
+[2024-11-05T20:35:25.658+0300][info][gc] GC(5) Pause Young (Normal) (G1 Evacuation Pause) 6M->5M(12M) 1,629ms
+[2024-11-05T20:35:25.684+0300][info][gc] GC(6) Pause Young (Concurrent Start) (G1 Evacuation Pause) 7M->5M(12M) 0,663ms
+[2024-11-05T20:35:25.684+0300][info][gc] GC(7) Concurrent Mark Cycle
+[2024-11-05T20:35:25.689+0300][info][gc] GC(7) Pause Remark 5M->5M(12M) 1,634ms
+[2024-11-05T20:35:25.690+0300][info][gc] GC(7) Pause Cleanup 5M->5M(12M) 0,022ms
+[2024-11-05T20:35:25.690+0300][info][gc] GC(7) Concurrent Mark Cycle 5,940ms
+[2024-11-05T20:35:25.776+0300][info][gc] GC(8) Pause Young (Prepare Mixed) (G1 Evacuation Pause) 6M->5M(12M) 1,165ms
+[2024-11-05T20:35:25.810+0300][info][gc] GC(9) Pause Young (Mixed) (G1 Evacuation Pause) 6M->5M(12M) 1,851ms
+[2024-11-05T20:35:25.836+0300][info][gc] GC(10) Pause Young (Normal) (G1 Evacuation Pause) 7M->6M(12M) 1,212ms
+[2024-11-05T20:35:25.879+0300][info][gc] GC(11) Pause Young (Concurrent Start) (G1 Evacuation Pause) 8M->6M(12M) 1,456ms
+[2024-11-05T20:35:25.879+0300][info][gc] GC(12) Concurrent Mark Cycle
+[2024-11-05T20:35:25.885+0300][info][gc] GC(12) Pause Remark 6M->6M(12M) 2,088ms
+[2024-11-05T20:35:25.886+0300][info][gc] GC(12) Pause Cleanup 6M->6M(12M) 0,023ms
+[2024-11-05T20:35:25.886+0300][info][gc] GC(12) Concurrent Mark Cycle 6,739ms
+[2024-11-05T20:35:25.981+0300][info][gc] GC(13) Pause Young (Prepare Mixed) (G1 Evacuation Pause) 8M->6M(12M) 1,565ms
+[2024-11-05T20:35:27.057+0300][info][gc] GC(14) Pause Young (Mixed) (G1 Evacuation Pause) 8M->5M(12M) 1,966ms
+[2024-11-05T20:35:36.234+0300][info][gc] GC(15) Pause Young (Concurrent Start) (G1 Humongous Allocation) 7M->5M(12M) 1,561ms
+[2024-11-05T20:35:36.234+0300][info][gc] GC(16) Concurrent Mark Cycle
+[2024-11-05T20:35:36.240+0300][info][gc] GC(16) Pause Remark 6M->6M(12M) 2,721ms
+[2024-11-05T20:35:36.242+0300][info][gc] GC(16) Pause Cleanup 6M->6M(12M) 0,156ms
+[2024-11-05T20:35:36.242+0300][info][gc] GC(16) Concurrent Mark Cycle 7,940ms
+
+[2024-11-05T20:35:38.854+0300][info][gc] GC(17) Pause Young (Prepare Mixed) (G1 Evacuation Pause) 10M->7M(12M) 1,268ms
+[2024-11-05T20:35:38.858+0300][info][gc] GC(18) Pause Young (Mixed) (G1 Evacuation Pause) 9M->7M(12M) 1,599ms
+[2024-11-05T20:35:38.860+0300][info][gc] GC(19) Pause Young (Concurrent Start) (G1 Evacuation Pause) 8M->7M(12M) 0,713ms
+[2024-11-05T20:35:38.860+0300][info][gc] GC(20) Concurrent Mark Cycle
+[2024-11-05T20:35:38.863+0300][info][gc] GC(21) Pause Young (Normal) (G1 Evacuation Pause) 8M->7M(12M) 0,369ms
+[2024-11-05T20:35:38.864+0300][info][gc] GC(22) Pause Young (Normal) (G1 Evacuation Pause) 8M->7M(12M) 0,729ms
+[2024-11-05T20:35:38.868+0300][info][gc] GC(20) Pause Remark 8M->8M(12M) 3,004ms
+[2024-11-05T20:35:38.869+0300][info][gc] GC(23) Pause Young (Normal) (G1 Evacuation Pause) 8M->7M(12M) 0,307ms
+[2024-11-05T20:35:38.870+0300][info][gc] GC(20) Pause Cleanup 8M->8M(12M) 0,038ms
+[2024-11-05T20:35:38.870+0300][info][gc] GC(24) Pause Young (Prepare Mixed) (G1 Evacuation Pause) 8M->7M(12M) 0,259ms
+[2024-11-05T20:35:38.871+0300][info][gc] GC(20) Concurrent Mark Cycle 10,478ms
+[2024-11-05T20:35:38.873+0300][info][gc] GC(25) Pause Young (Mixed) (G1 Evacuation Pause) 8M->7M(12M) 1,018ms
+[2024-11-05T20:35:38.875+0300][info][gc] GC(26) Pause Young (Concurrent Start) (G1 Evacuation Pause) 8M->7M(12M) 0,596ms
+[2024-11-05T20:35:38.875+0300][info][gc] GC(27) Concurrent Mark Cycle
+[2024-11-05T20:35:38.876+0300][info][gc] GC(28) Pause Young (Normal) (G1 Evacuation Pause) 8M->7M(12M) 0,348ms
+[2024-11-05T20:35:38.878+0300][info][gc] GC(29) Pause Young (Normal) (G1 Evacuation Pause) 8M->7M(12M) 0,675ms
+[2024-11-05T20:35:38.880+0300][info][gc] GC(27) Pause Remark 8M->8M(12M) 1,418ms
+[2024-11-05T20:35:38.881+0300][info][gc] GC(30) Pause Young (Normal) (G1 Evacuation Pause) 8M->7M(12M) 0,215ms
+[2024-11-05T20:35:38.882+0300][info][gc] GC(27) Pause Cleanup 8M->8M(12M) 0,093ms
+[2024-11-05T20:35:38.882+0300][info][gc] GC(27) Concurrent Mark Cycle 7,238ms
+[2024-11-05T20:35:38.882+0300][info][gc] GC(31) Pause Young (Prepare Mixed) (G1 Evacuation Pause) 8M->7M(12M) 0,251ms
+[2024-11-05T20:35:38.884+0300][info][gc] GC(32) Pause Young (Mixed) (G1 Evacuation Pause) 8M->7M(12M) 0,826ms
+[2024-11-05T20:35:38.886+0300][info][gc] GC(33) Pause Young (Concurrent Start) (G1 Evacuation Pause) 8M->7M(12M) 0,481ms
+[2024-11-05T20:35:38.886+0300][info][gc] GC(34) Concurrent Mark Cycle
+[2024-11-05T20:35:38.887+0300][info][gc] GC(35) Pause Young (Normal) (G1 Evacuation Pause) 8M->7M(12M) 0,242ms
+[2024-11-05T20:35:38.888+0300][info][gc] GC(36) Pause Young (Normal) (G1 Evacuation Pause) 8M->7M(12M) 0,254ms
+[2024-11-05T20:35:38.890+0300][info][gc] GC(34) Pause Remark 8M->8M(12M) 1,141ms
+[2024-11-05T20:35:38.891+0300][info][gc] GC(37) Pause Young (Normal) (G1 Evacuation Pause) 8M->7M(12M) 0,254ms
+[2024-11-05T20:35:38.892+0300][info][gc] GC(34) Pause Cleanup 8M->8M(12M) 0,030ms
+[2024-11-05T20:35:38.892+0300][info][gc] GC(38) Pause Young (Prepare Mixed) (G1 Evacuation Pause) 8M->7M(12M) 0,154ms
+[2024-11-05T20:35:38.892+0300][info][gc] GC(34) Concurrent Mark Cycle 6,460ms
+[2024-11-05T20:35:38.894+0300][info][gc] GC(39) Pause Young (Mixed) (G1 Evacuation Pause) 8M->7M(12M) 1,061ms
+[2024-11-05T20:35:38.896+0300][info][gc] GC(40) Pause Young (Concurrent Start) (G1 Evacuation Pause) 8M->7M(12M) 0,273ms
+[2024-11-05T20:35:38.896+0300][info][gc] GC(41) Concurrent Mark Cycle
+[2024-11-05T20:35:38.897+0300][info][gc] GC(42) Pause Young (Normal) (G1 Evacuation Pause) 8M->7M(12M) 0,256ms
+[2024-11-05T20:35:38.899+0300][info][gc] GC(43) Pause Young (Normal) (G1 Evacuation Pause) 8M->7M(12M) 0,658ms
+[2024-11-05T20:35:38.901+0300][info][gc] GC(41) Pause Remark 8M->8M(12M) 1,001ms
+[2024-11-05T20:35:38.901+0300][info][gc] GC(44) Pause Young (Normal) (G1 Evacuation Pause) 8M->7M(12M) 0,232ms
+[2024-11-05T20:35:38.902+0300][info][gc] GC(41) Pause Cleanup 9M->9M(12M) 0,014ms
+[2024-11-05T20:35:38.902+0300][info][gc] GC(41) Concurrent Mark Cycle 6,636ms
+
+[2024-11-05T20:35:42.050+0300][info][gc] GC(45) Pause Young (Prepare Mixed) (G1 Evacuation Pause) 9M->6M(12M) 0,877ms
+
+[2024-11-05T20:35:59.052+0300][info][gc] GC(46) Pause Young (Mixed) (G1 Evacuation Pause) (Evacuation Failure) 10M->10M(12M) 2,768ms
+[2024-11-05T20:36:08.054+0300][info][gc] GC(47) Pause Young (Concurrent Start) (G1 Evacuation Pause) (Evacuation Failure) 11M->11M(12M) 1,053ms
+[2024-11-05T20:36:08.054+0300][info][gc] GC(49) Concurrent Mark Cycle
+[2024-11-05T20:36:08.067+0300][info][gc] GC(48) Pause Full (G1 Compaction Pause) 11M->6M(12M) 12,922ms
+[2024-11-05T20:36:08.067+0300][info][gc] GC(49) Concurrent Mark Cycle 12,987ms
+[2024-11-05T20:36:37.056+0300][info][gc] GC(50) Pause Young (Normal) (G1 Evacuation Pause) 10M->6M(12M) 1,054ms
+[2024-11-05T20:36:57.061+0300][info][gc] GC(51) Pause Young (Concurrent Start) (G1 Evacuation Pause) 8M->6M(12M) 1,469ms
+[2024-11-05T20:36:57.061+0300][info][gc] GC(52) Concurrent Mark Cycle
+[2024-11-05T20:36:57.067+0300][info][gc] GC(52) Pause Remark 6M->6M(12M) 2,574ms
+[2024-11-05T20:36:57.069+0300][info][gc] GC(52) Pause Cleanup 6M->6M(12M) 0,118ms
+[2024-11-05T20:36:57.069+0300][info][gc] GC(52) Concurrent Mark Cycle 8,318ms
+
+
+При использовании сортировки слиянием с 20:35:38 по 20:35:39 производилась большое количество циклов пометки
+с дальнейшим выполнением minor GC.
+
+При использовании сортировки вставками с 20:35:43 по 20:35:46 производилась единичная minor GC.
+
+При использовании сортировки пузырьком с 20:35:51 по 20:37:07 производилась циклы пометки, minor GC а так же major GC
+в количестве 1 шт.
+
+Итог:
+
+Сортировка слиянием: Отмечается аналогия с parallel_GC -> так же отмечается увеличение объема используемого хипа.
+Но перед использованием следующего алгоритма - сортировки вставками, произошла освобождение памяти хипа.
+
+Сортировка вставками: аналогично с сортировкой слиянием увеличение используемого хипа, но в занимаемый объем меньше,
+приблизительно на 50%. Так же разница с parallel_GC составляет следующее: в данном случае отмечается небольшой прирост
+используемого хипа и дальнейшая стабилизация используемого объема, в то время как в parallel_GC происходила major GC
+и небольшой прирост используемого хипа.
+
+Сортировка пузырьком: по прежнему отмечается цикличность периодов заполнения хипа и его очистка, но в данном случае
+эти циклы имеют участки "стабилизации", а так же ступенчатый рост используемого хипа.
