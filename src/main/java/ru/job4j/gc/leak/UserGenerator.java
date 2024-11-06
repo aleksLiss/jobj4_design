@@ -30,9 +30,11 @@ public class UserGenerator implements Generate {
     public void generate() {
         users.clear();
         Stream.of(NEW_USERS).forEach(i -> users.add(new User(
-                surnames.get(random.nextInt(surnames.size())) + SEPARATOR
-                        + names.get(random.nextInt(names.size())) + SEPARATOR
-                        + patrons.get(random.nextInt(patrons.size())))));
+                new StringBuilder(surnames.get(random.nextInt(surnames.size())))
+                        .append(SEPARATOR)
+                        .append(names.get(random.nextInt(names.size())))
+                        .append(SEPARATOR)
+                        .append(patrons.get(random.nextInt(patrons.size()))).toString())));
     }
 
     private void readAll() {
