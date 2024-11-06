@@ -4,7 +4,6 @@ import java.util.Random;
 import java.util.Scanner;
 
 public class Menu {
-    // run - 30 s - 2   create 100 posts - 30 s - 4   delete posts - 30 s - create 100 p - 1 m
     private static final Integer ADD_POST = 1;
     private static final Integer ADD_MANY_POST = 2;
     private static final Integer SHOW_ALL_POSTS = 3;
