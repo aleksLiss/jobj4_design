@@ -23,14 +23,14 @@ class ReportToJsonTest {
         DateTimeParser<GregorianCalendar> parser = new ReportGregorianCalendarParser();
         ReportToJson report = new ReportToJson(store, parser);
         String result = report.generate(employee -> true);
-        String expected = "[" +
-                "{" +
-                "\"name\":\"John Doe\"," +
-                "\"hired\":\"08:06:2023 17:41\"," +
-                "\"fired\":\"08:06:2023 17:41\"," +
-                "\"salary\":5000.0" +
-                "}" +
-                "]";
+        String expected = "["
+                + "{"
+                + "\"name\":\"John Doe\","
+                + "\"hired\":\"08:06:2023 17:41\","
+                + "\"fired\":\"08:06:2023 17:41\","
+                + "\"salary\":5000.0"
+                + "}"
+                + "]";
         assertThat(result).isEqualTo(expected);
     }
 
@@ -44,15 +44,15 @@ class ReportToJsonTest {
         DateTimeParser<GregorianCalendar> parser1 = new ReportGregorianCalendarParser();
         ReportToJson report = new ReportToJson(store1, parser1);
         String result = report.generate(employee -> true);
-        String expected = "[{\"name\":\"Vova\"," +
-                "\"hired\":\"08:06:2023 17:42\"," +
-                "\"fired\":\"08:06:2023 17:42\"," +
-                "\"salary\":10000.0}," +
-                "{" +
-                "\"name\":\"Misha\"," +
-                "\"hired\":\"08:06:2023 17:42\"," +
-                "\"fired\":\"08:06:2023 17:42\"," +
-                "\"salary\":100.0}]";
+        String expected = "[{\"name\":\"Vova\","
+                + "\"hired\":\"08:06:2023 17:42\","
+                + "\"fired\":\"08:06:2023 17:42\","
+                + "\"salary\":10000.0},"
+                + "{"
+                + "\"name\":\"Misha\","
+                + "\"hired\":\"08:06:2023 17:42\","
+                + "\"fired\":\"08:06:2023 17:42\","
+                + "\"salary\":100.0}]";
         assertThat(result).isEqualTo(expected);
     }
 }

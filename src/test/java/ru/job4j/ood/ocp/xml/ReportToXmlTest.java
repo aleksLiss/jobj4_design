@@ -23,15 +23,15 @@ class ReportToXmlTest {
         DateTimeParser<GregorianCalendar> parser = new ReportGregorianCalendarParser();
         ReportToXml report = new ReportToXml(store, parser);
         String result = report.generate(employee -> true);
-        String expected = "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?>\n" +
-                "<employeesWrapper>\n" +
-                "    <employeeWrapper>\n" +
-                "        <name>John Doe</name>\n" +
-                "        <hired>08:06:2023 17:41</hired>\n" +
-                "        <fired>08:06:2023 17:41</fired>\n" +
-                "        <salary>5000.0</salary>\n" +
-                "    </employeeWrapper>\n" +
-                "</employeesWrapper>\n";
+        String expected = "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?>\n"
+                + "<employeesWrapper>\n"
+                + "    <employeeWrapper>\n"
+                + "        <name>John Doe</name>\n"
+                + "        <hired>08:06:2023 17:41</hired>\n"
+                + "        <fired>08:06:2023 17:41</fired>\n"
+                + "        <salary>5000.0</salary>\n"
+                + "    </employeeWrapper>\n"
+                + "</employeesWrapper>\n";
         assertThat(result).isEqualTo(expected);
     }
 
@@ -45,21 +45,21 @@ class ReportToXmlTest {
         DateTimeParser<GregorianCalendar> parser = new ReportGregorianCalendarParser();
         ReportToXml report = new ReportToXml(store, parser);
         String result = report.generate(employee -> true);
-        String expected = "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?>\n" +
-                "<employeesWrapper>\n" +
-                "    <employeeWrapper>\n" +
-                "        <name>John Doe</name>\n" +
-                "        <hired>08:06:2023 17:41</hired>\n" +
-                "        <fired>08:06:2023 17:41</fired>\n" +
-                "        <salary>5000.0</salary>\n" +
-                "    </employeeWrapper>\n" +
-                "    <employeeWrapper>\n" +
-                "        <name>Jack Black</name>\n" +
-                "        <hired>08:06:2023 17:41</hired>\n" +
-                "        <fired>08:06:2023 17:41</fired>\n" +
-                "        <salary>1000.0</salary>\n" +
-                "    </employeeWrapper>\n" +
-                "</employeesWrapper>\n";
+        String expected = "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?>\n"
+                + "<employeesWrapper>\n"
+                + "    <employeeWrapper>\n"
+                + "        <name>John Doe</name>\n"
+                + "        <hired>08:06:2023 17:41</hired>\n"
+                + "        <fired>08:06:2023 17:41</fired>\n"
+                + "        <salary>5000.0</salary>\n"
+                + "    </employeeWrapper>\n"
+                + "    <employeeWrapper>\n"
+                + "        <name>Jack Black</name>\n"
+                + "        <hired>08:06:2023 17:41</hired>\n"
+                + "        <fired>08:06:2023 17:41</fired>\n"
+                + "        <salary>1000.0</salary>\n"
+                + "    </employeeWrapper>\n"
+                + "</employeesWrapper>\n";
         assertThat(result).isEqualTo(expected);
     }
 }
