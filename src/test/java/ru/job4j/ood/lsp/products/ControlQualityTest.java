@@ -3,14 +3,15 @@ package ru.job4j.ood.lsp.products;
 import org.junit.jupiter.api.Test;
 import ru.job4j.ood.lsp.products.food.Food;
 import ru.job4j.ood.lsp.products.food.Meat;
-import ru.job4j.ood.lsp.products.formatt.DateFormatter;
-import ru.job4j.ood.lsp.products.formatt.FoodsDateFormatter;
 import ru.job4j.ood.lsp.products.store.Shop;
 import ru.job4j.ood.lsp.products.store.Store;
 import ru.job4j.ood.lsp.products.store.Trash;
 import ru.job4j.ood.lsp.products.store.Warehouse;
 
+import java.time.LocalDateTime;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import static org.assertj.core.api.Assertions.*;
 
@@ -18,16 +19,19 @@ class ControlQualityTest {
 
     @Test
     public void whenAddThreeProductsThenAddItIntoWarehouse() {
-        DateFormatter sdf = new FoodsDateFormatter();
+        LocalDateTime now = LocalDateTime.now();
         Store trash = new Trash();
         Store warehouse = new Warehouse();
         Store shop = new Shop();
-        List<Store> storeList = List.of(warehouse, shop, trash);
-        Food beef = new Meat("beef", 34.1, 15, sdf.parse("2025/01/15"), sdf.parse("2024/11/10"));
-        Food chicken = new Meat("chicken", 20.5, 5, sdf.parse("2025/01/20"), sdf.parse("2024/11/10"));
-        Food pork = new Meat("pork", 29.4, 10, sdf.parse("2025/01/30"), sdf.parse("2024/11/10"));
+        Food beef = new Meat("beef", 34.1, 15, now.minusDays(2), now.plusDays(30));
+        Food chicken = new Meat("chicken", 20.5, 5, now.minusDays(1), now.plusDays(40));
+        Food pork = new Meat("pork", 29.4, 10, now.minusDays(3), now.plusDays(40));
         List<Food> foodList = List.of(beef, chicken, pork);
-        ControlQuality control = new ControlQuality(storeList);
+        Map<String, Store> storeMap = new HashMap<>();
+        storeMap.put("warehouse", warehouse);
+        storeMap.put("shop", shop);
+        storeMap.put("trash", trash);
+        ControlQuality control = new ControlQuality(storeMap);
         control.calculateQuality(foodList);
         assertThat(warehouse.getAll())
                 .isNotEmpty()
@@ -37,16 +41,19 @@ class ControlQualityTest {
 
     @Test
     public void whenAddThreeProductsThenAddItIntoShopAndNotCalculatePriceWithDiscount() {
-        DateFormatter sdf = new FoodsDateFormatter();
+        LocalDateTime now = LocalDateTime.now();
         Store trash = new Trash();
         Store warehouse = new Warehouse();
         Store shop = new Shop();
-        List<Store> storeList = List.of(warehouse, shop, trash);
-        Food beef = new Meat("beef", 34.1, 15, sdf.parse("2025/02/10"), sdf.parse("2024/10/20"));
-        Food chicken = new Meat("chicken", 20.5, 5, sdf.parse("2025/02/05"), sdf.parse("2024/10/25"));
-        Food pork = new Meat("pork", 29.4, 10, sdf.parse("2025/02/10"), sdf.parse("2024/10/15"));
+        Food beef = new Meat("beef", 34.1, 15, now.minusDays(20), now.plusDays(20));
+        Food chicken = new Meat("chicken", 20.5, 5, now.minusDays(30), now.plusDays(40));
+        Food pork = new Meat("pork", 29.4, 10, now.minusDays(10), now.plusDays(30));
         List<Food> foodList = List.of(beef, chicken, pork);
-        ControlQuality control = new ControlQuality(storeList);
+        Map<String, Store> storeMap = new HashMap<>();
+        storeMap.put("warehouse", warehouse);
+        storeMap.put("shop", shop);
+        storeMap.put("trash", trash);
+        ControlQuality control = new ControlQuality(storeMap);
         control.calculateQuality(foodList);
         assertThat(shop.getAll())
                 .isNotEmpty()
@@ -56,31 +63,37 @@ class ControlQualityTest {
 
     @Test
     public void whenAddThreeProductsThenAddItIntoShopAndCalculateNewPriceWithDiscount() {
-        DateFormatter sdf = new FoodsDateFormatter();
+        LocalDateTime now = LocalDateTime.now();
         Store trash = new Trash();
         Store warehouse = new Warehouse();
         Store shop = new Shop();
-        List<Store> storeList = List.of(warehouse, shop, trash);
-        Food beef = new Meat("beef", 34.1, 15, sdf.parse("2024/12/20"), sdf.parse("2024/07/20"));
+        Food beef = new Meat("beef", 34.1, 15, now.minusDays(30), now.plusDays(5));
         double expectedPrice = beef.getPrice() * (double) (100 - beef.getDiscount()) / 100;
         List<Food> foodList = List.of(beef);
-        ControlQuality control = new ControlQuality(storeList);
+        Map<String, Store> storeMap = new HashMap<>();
+        storeMap.put("warehouse", warehouse);
+        storeMap.put("shop", shop);
+        storeMap.put("trash", trash);
+        ControlQuality control = new ControlQuality(storeMap);
         control.calculateQuality(foodList);
         assertThat(shop.buy("beef").getFirst().getPrice()).isEqualTo(expectedPrice);
     }
 
     @Test
     public void whenAddThreeProductsThenAddItIntoTrash() {
-        DateFormatter sdf = new FoodsDateFormatter();
+        LocalDateTime now = LocalDateTime.now();
         Store trash = new Trash();
         Store warehouse = new Warehouse();
         Store shop = new Shop();
-        List<Store> storeList = List.of(warehouse, shop, trash);
-        Food beef = new Meat("beef", 34.1, 15, sdf.parse("2024/11/23"), sdf.parse("2024/06/20"));
-        Food chicken = new Meat("chicken", 20.5, 5, sdf.parse("2024/11/23"), sdf.parse("2024/08/25"));
-        Food pork = new Meat("pork", 29.4, 10, sdf.parse("2024/11/23"), sdf.parse("2024/09/15"));
+        Food beef = new Meat("beef", 34.1, 15, now.minusDays(15), now.plusDays(0));
+        Food chicken = new Meat("chicken", 20.5, 5, now.minusDays(20), now.plusDays(0));
+        Food pork = new Meat("pork", 29.4, 10, now.minusDays(10), now.plusDays(0));
         List<Food> foodList = List.of(beef, chicken, pork);
-        ControlQuality control = new ControlQuality(storeList);
+        Map<String, Store> storeMap = new HashMap<>();
+        storeMap.put("warehouse", warehouse);
+        storeMap.put("shop", shop);
+        storeMap.put("trash", trash);
+        ControlQuality control = new ControlQuality(storeMap);
         control.calculateQuality(foodList);
         assertThat(trash.getAll())
                 .isNotEmpty()
@@ -90,17 +103,20 @@ class ControlQualityTest {
 
     @Test
     public void whenAddThreeProductsThenAddEveryProductIntoEachShops() {
-        DateFormatter sdf = new FoodsDateFormatter();
+        LocalDateTime now = LocalDateTime.now();
         Store trash = new Trash();
         Store warehouse = new Warehouse();
         Store shop = new Shop();
-        List<Store> storeList = List.of(warehouse, shop, trash);
-        Food beef = new Meat("beef", 34.1, 15, sdf.parse("2024/12/20"), sdf.parse("2024/07/20"));
-        Food chicken = new Meat("chicken", 20.5, 5, sdf.parse("2025/01/20"), sdf.parse("2024/11/10"));
-        Food pork = new Meat("pork", 29.4, 10, sdf.parse("2024/11/23"), sdf.parse("2024/09/15"));
+        Food beef = new Meat("beef", 34.1, 15, now.minusDays(5), now.plusDays(30));
+        Food chicken = new Meat("chicken", 20.5, 5, now.minusDays(20), now.plusDays(5));
+        Food pork = new Meat("pork", 29.4, 10, now.minusDays(15), now.plusDays(0));
         List<Food> foodList = List.of(beef, chicken, pork);
-        ControlQuality control = new ControlQuality(storeList);
+        Map<String, Store> storeMap = new HashMap<>();
+        storeMap.put("warehouse", warehouse);
+        storeMap.put("shop", shop);
+        storeMap.put("trash", trash);
+        ControlQuality control = new ControlQuality(storeMap);
         control.calculateQuality(foodList);
-        assertThat(warehouse.getAll()).isNotEmpty().hasSize(1).containsExactlyInAnyOrder(chicken);
+        assertThat(warehouse.getAll()).isNotEmpty().hasSize(1).containsExactlyInAnyOrder(beef);
     }
 }

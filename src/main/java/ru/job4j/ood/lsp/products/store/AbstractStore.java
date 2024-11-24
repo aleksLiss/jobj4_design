@@ -20,8 +20,8 @@ public abstract class AbstractStore implements Store {
     }
 
     @Override
-    public boolean addToShop(Food food) {
-        return foods.add(food);
+    public void addToShop(Food food) {
+        foods.add(food);
     }
 
     @Override

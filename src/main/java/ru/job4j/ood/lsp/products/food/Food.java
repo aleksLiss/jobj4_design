@@ -1,15 +1,15 @@
 package ru.job4j.ood.lsp.products.food;
 
-import java.util.Date;
+import java.time.LocalDateTime;
 
 public abstract class Food {
     String name;
     double price;
     int discount;
-    Date expiryDate;
-    Date createDate;
+    LocalDateTime expiryDate;
+    LocalDateTime createDate;
 
-    public Food(String name, double price, int discount, Date expiryDate, Date createDate) {
+    public Food(String name, double price, int discount, LocalDateTime createDate, LocalDateTime expiryDate) {
         this.name = name;
         this.price = price;
         this.discount = discount;
@@ -23,9 +23,9 @@ public abstract class Food {
 
     public abstract int getDiscount();
 
-    public abstract Date getExpiryDate();
+    public abstract LocalDateTime getExpiryDate();
 
-    public abstract Date getCreateDate();
+    public abstract LocalDateTime getCreateDate();
 
     @Override
     public String toString() {

@@ -1,10 +1,11 @@
 package ru.job4j.ood.lsp.products.food;
 
-import java.util.Date;
+import java.time.LocalDateTime;
 
 public class Fish extends Food {
-    public Fish(String name, double price, int discount, Date expiryDate, Date createDate) {
-        super(name, price, discount, expiryDate, createDate);
+
+    public Fish(String name, double price, int discount, LocalDateTime createDate, LocalDateTime expiryDate) {
+        super(name, price, discount, createDate, expiryDate);
     }
 
     @Override
@@ -23,12 +24,12 @@ public class Fish extends Food {
     }
 
     @Override
-    public Date getExpiryDate() {
+    public LocalDateTime getExpiryDate() {
         return expiryDate;
     }
 
     @Override
-    public Date getCreateDate() {
+    public LocalDateTime getCreateDate() {
         return createDate;
     }
 }

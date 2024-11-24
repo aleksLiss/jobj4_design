@@ -8,7 +8,7 @@ public interface Store {
 
     List<Food> buy(String name);
 
-    boolean addToShop(Food food);
+    void addToShop(Food food);
 
     void deleteFromShop(Food food);
 

@@ -3,8 +3,9 @@ package ru.job4j.ood.lsp.products.store;
 import org.junit.jupiter.api.Test;
 import ru.job4j.ood.lsp.products.food.Food;
 import ru.job4j.ood.lsp.products.food.Meat;
-import ru.job4j.ood.lsp.products.formatt.DateFormatter;
-import ru.job4j.ood.lsp.products.formatt.FoodsDateFormatter;
+
+
+import java.time.LocalDateTime;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -12,8 +13,8 @@ class TrashTest {
 
     @Test
     public void whenAddOneProductThenReturnOneProduct() {
-        DateFormatter p = new FoodsDateFormatter();
-        Food expected = new Meat("beef", 22, 10, p.parse("2024/11/23"), p.parse("2024/11/20"));
+        LocalDateTime now = LocalDateTime.now();
+        Food expected = new Meat("beef", 22, 10, now.minusDays(10), now);
         Store trashStore = new Trash();
         trashStore.addToShop(expected);
         Food result = trashStore.buy("beef").getFirst();
@@ -22,10 +23,10 @@ class TrashTest {
 
     @Test
     public void whenAddThreeProductsThenGetThreeProduct() {
-        DateFormatter p = new FoodsDateFormatter();
-        Food expectedOne = new Meat("chicken", 22, 10, p.parse("2024/11/23"), p.parse("2024/11/20"));
-        Food expectedTwo = new Meat("pork", 22, 10, p.parse("2024/11/23"), p.parse("2024/11/20"));
-        Food expectedThree = new Meat("beef", 22, 10, p.parse("2024/11/23"), p.parse("2024/11/20"));
+        LocalDateTime now = LocalDateTime.now();
+        Food expectedOne = new Meat("chicken", 22, 10, now.minusDays(15), now);
+        Food expectedTwo = new Meat("pork", 22, 10, now.minusDays(20), now);
+        Food expectedThree = new Meat("beef", 22, 10, now.minusDays(30), now);
         Store trashStore = new Trash();
         trashStore.addToShop(expectedOne);
         trashStore.addToShop(expectedTwo);
@@ -43,10 +44,10 @@ class TrashTest {
 
     @Test
     public void whenAddOneProductAndGetAllProductsThenReturnProductsListWithOneProduct() {
-        DateFormatter p = new FoodsDateFormatter();
-        Food expectedOne = new Meat("beef", 22, 10, p.parse("2024/11/23"), p.parse("2024/11/20"));
-        Food expectedTwo = new Meat("beef", 22, 10, p.parse("2024/11/23"), p.parse("2024/11/20"));
-        Food expectedThree = new Meat("beef", 22, 10, p.parse("2024/11/23"), p.parse("2024/11/20"));
+        LocalDateTime now = LocalDateTime.now();
+        Food expectedOne = new Meat("beef", 22, 10, now.minusDays(15), now);
+        Food expectedTwo = new Meat("beef", 22, 10, now.minusDays(5), now);
+        Food expectedThree = new Meat("beef", 22, 10, now.minusDays(15), now);
         Store trashStore = new Trash();
         trashStore.addToShop(expectedOne);
         trashStore.addToShop(expectedTwo);
@@ -59,9 +60,9 @@ class TrashTest {
 
     @Test
     public void whenAddTwoProductsAndGetAllOneProductThenReturnTwoProducts() {
-        DateFormatter p = new FoodsDateFormatter();
-        Food expectedOne = new Meat("beef", 22, 10, p.parse("2024/11/23"), p.parse("2024/11/20"));
-        Food expectedThree = new Meat("chicken", 22, 10, p.parse("2024/11/23"), p.parse("2024/11/20"));
+        LocalDateTime now = LocalDateTime.now();
+        Food expectedOne = new Meat("beef", 22, 10, now.minusDays(16), now);
+        Food expectedThree = new Meat("chicken", 22, 10, now.minusDays(11), now);
         Store trashStore = new Trash();
         trashStore.addToShop(expectedOne);
         trashStore.addToShop(expectedThree);
@@ -73,8 +74,8 @@ class TrashTest {
 
     @Test
     public void whenAddOneProductAndGetProductWithAnotherNameThenReturnEmptyList() {
-        DateFormatter p = new FoodsDateFormatter();
-        Food expectedOne = new Meat("beef", 22, 10, p.parse("2024/11/23"), p.parse("2024/11/20"));
+        LocalDateTime now = LocalDateTime.now();
+        Food expectedOne = new Meat("beef", 22, 10, now.minusDays(8), now);
         Store trashStore = new Trash();
         trashStore.addToShop(expectedOne);
         assertThat(trashStore.buy("chicken")).isEmpty();
@@ -83,8 +84,8 @@ class TrashTest {
 
     @Test
     public void whenAddOneProductAndDeleteOneProductThenReturnEmptyList() {
-        DateFormatter p = new FoodsDateFormatter();
-        Food expectedOne = new Meat("beef", 22, 10, p.parse("2024/11/23"), p.parse("2024/11/20"));
+        LocalDateTime now = LocalDateTime.now();
+        Food expectedOne = new Meat("beef", 22, 10, now.minusDays(5), now);
         Store trashStore = new Trash();
         trashStore.addToShop(expectedOne);
         trashStore.deleteFromShop(expectedOne);
@@ -94,10 +95,10 @@ class TrashTest {
 
     @Test
     public void whenAddThreeProductsAndDeleteOneProductThenReturnListWithTwoProducts() {
-        DateFormatter p = new FoodsDateFormatter();
-        Food expectedOne = new Meat("beef", 22, 10, p.parse("2024/11/23"), p.parse("2024/11/20"));
-        Food expectedTwo = new Meat("pork", 22, 10, p.parse("2024/11/23"), p.parse("2024/11/20"));
-        Food expectedThree = new Meat("lemon", 22, 10, p.parse("2024/11/23"), p.parse("2024/11/20"));
+        LocalDateTime now = LocalDateTime.now();
+        Food expectedOne = new Meat("beef", 22, 10, now.minusDays(5), now);
+        Food expectedTwo = new Meat("pork", 22, 10, now.minusDays(15), now);
+        Food expectedThree = new Meat("lemon", 22, 10, now.minusDays(25), now);
         Store trashStore = new Trash();
         trashStore.addToShop(expectedOne);
         trashStore.addToShop(expectedTwo);

@@ -3,8 +3,8 @@ package ru.job4j.ood.lsp.products.store;
 import org.junit.jupiter.api.Test;
 import ru.job4j.ood.lsp.products.food.Food;
 import ru.job4j.ood.lsp.products.food.Meat;
-import ru.job4j.ood.lsp.products.formatt.DateFormatter;
-import ru.job4j.ood.lsp.products.formatt.FoodsDateFormatter;
+
+import java.time.LocalDateTime;
 
 import static org.assertj.core.api.Assertions.*;
 
@@ -12,8 +12,8 @@ class WarehouseTest {
 
     @Test
     public void whenAddOneProductThenReturnOneProduct() {
-        DateFormatter p = new FoodsDateFormatter();
-        Food expected = new Meat("beef", 22, 10, p.parse("2024/11/23"), p.parse("2024/11/20"));
+        LocalDateTime dateTime = LocalDateTime.now();
+        Food expected = new Meat("beef", 22, 10, dateTime.minusDays(10), dateTime.plusDays(40));
         Store warehouse = new Warehouse();
         warehouse.addToShop(expected);
         Food result = warehouse.buy("beef").getFirst();
@@ -22,15 +22,15 @@ class WarehouseTest {
 
     @Test
     public void whenAddThreeProductsThenGetThreeProduct() {
-        DateFormatter p = new FoodsDateFormatter();
-        Food expectedOne = new Meat("chicken", 22, 10, p.parse("2024/11/23"), p.parse("2024/11/20"));
-        Food expectedTwo = new Meat("pork", 22, 10, p.parse("2024/11/23"), p.parse("2024/11/20"));
-        Food expectedThree = new Meat("beef", 22, 10, p.parse("2024/11/23"), p.parse("2024/11/20"));
+        LocalDateTime dateTime = LocalDateTime.now();
+        Food expectedOne = new Meat("chicken", 22, 10, dateTime.minusDays(5), dateTime.plusDays(30));
+        Food expectedTwo = new Meat("pork", 22, 10, dateTime.minusDays(15), dateTime.plusDays(50));
+        Food expectedThree = new Meat("beef", 22, 10, dateTime.minusDays(10), dateTime.plusDays(45));
         Store warehouse = new Warehouse();
         warehouse.addToShop(expectedOne);
         warehouse.addToShop(expectedTwo);
         warehouse.addToShop(expectedThree);
-        assertThat(warehouse.buy("beef").getFirst()).isEqualTo(expectedThree);
+        assertThat(warehouse.buy("beef").getLast()).isEqualTo(expectedThree);
     }
 
     @Test
@@ -40,13 +40,12 @@ class WarehouseTest {
                 .isEmpty();
     }
 
-
     @Test
     public void whenAddOneProductAndGetAllProductsThenReturnProductsListWithOneProduct() {
-        DateFormatter p = new FoodsDateFormatter();
-        Food expectedOne = new Meat("beef", 22, 10, p.parse("2024/11/23"), p.parse("2024/11/20"));
-        Food expectedTwo = new Meat("beef", 22, 10, p.parse("2024/11/23"), p.parse("2024/11/20"));
-        Food expectedThree = new Meat("beef", 22, 10, p.parse("2024/11/23"), p.parse("2024/11/20"));
+        LocalDateTime dateTime = LocalDateTime.now();
+        Food expectedOne = new Meat("beef", 22, 10, dateTime.minusDays(10), dateTime.plusDays(55));
+        Food expectedTwo = new Meat("beef", 22, 10, dateTime.minusDays(10), dateTime.plusDays(50));
+        Food expectedThree = new Meat("beef", 22, 10, dateTime.minusDays(10), dateTime.plusDays(45));
         Store warehouse = new Warehouse();
         warehouse.addToShop(expectedOne);
         warehouse.addToShop(expectedTwo);
@@ -59,9 +58,9 @@ class WarehouseTest {
 
     @Test
     public void whenAddTwoProductsAndGetAllOneProductThenReturnTwoProducts() {
-        DateFormatter p = new FoodsDateFormatter();
-        Food expectedOne = new Meat("beef", 22, 10, p.parse("2024/11/23"), p.parse("2024/11/20"));
-        Food expectedThree = new Meat("chicken", 22, 10, p.parse("2024/11/23"), p.parse("2024/11/20"));
+        LocalDateTime dateTime = LocalDateTime.now();
+        Food expectedOne = new Meat("beef", 22, 10, dateTime.minusDays(10), dateTime.plusDays(55));
+        Food expectedThree = new Meat("chicken", 22, 10, dateTime.minusDays(10), dateTime.plusDays(55));
         Store warehouse = new Warehouse();
         warehouse.addToShop(expectedOne);
         warehouse.addToShop(expectedThree);
@@ -73,31 +72,29 @@ class WarehouseTest {
 
     @Test
     public void whenAddOneProductAndGetProductWithAnotherNameThenReturnEmptyList() {
-        DateFormatter p = new FoodsDateFormatter();
-        Food expectedOne = new Meat("beef", 22, 10, p.parse("2024/11/23"), p.parse("2024/11/20"));
+        LocalDateTime dateTime = LocalDateTime.now();
+        Food expectedOne = new Meat("beef", 22, 10, dateTime.minusDays(5), dateTime.plusDays(40));
         Store warehouse = new Warehouse();
         warehouse.addToShop(expectedOne);
         assertThat(warehouse.buy("chicken")).isEmpty();
     }
 
-
     @Test
     public void whenAddOneProductAndDeleteOneProductThenReturnEmptyList() {
-        DateFormatter p = new FoodsDateFormatter();
-        Food expectedOne = new Meat("beef", 22, 10, p.parse("2024/11/23"), p.parse("2024/11/20"));
+        LocalDateTime dateTime = LocalDateTime.now();
+        Food expectedOne = new Meat("beef", 22, 10, dateTime.minusDays(5), dateTime.plusDays(40));
         Store warehouse = new Warehouse();
         warehouse.addToShop(expectedOne);
         warehouse.deleteFromShop(expectedOne);
         assertThat(warehouse.getAll()).isEmpty();
     }
 
-
     @Test
     public void whenAddThreeProductsAndDeleteOneProductThenReturnListWithTwoProducts() {
-        DateFormatter p = new FoodsDateFormatter();
-        Food expectedOne = new Meat("beef", 22, 10, p.parse("2024/11/23"), p.parse("2024/11/20"));
-        Food expectedTwo = new Meat("pork", 22, 10, p.parse("2024/11/23"), p.parse("2024/11/20"));
-        Food expectedThree = new Meat("lemon", 22, 10, p.parse("2024/11/23"), p.parse("2024/11/20"));
+        LocalDateTime dateTime = LocalDateTime.now();
+        Food expectedOne = new Meat("beef", 22, 10, dateTime.minusDays(5), dateTime.plusDays(55));
+        Food expectedTwo = new Meat("pork", 22, 10, dateTime.minusDays(5), dateTime.plusDays(55));
+        Food expectedThree = new Meat("lemon", 22, 10, dateTime.minusDays(5), dateTime.plusDays(55));
         Store warehouse = new Warehouse();
         warehouse.addToShop(expectedOne);
         warehouse.addToShop(expectedTwo);
