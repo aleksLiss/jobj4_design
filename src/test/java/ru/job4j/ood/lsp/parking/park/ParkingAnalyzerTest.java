@@ -10,7 +10,6 @@ import static org.assertj.core.api.Assertions.*;
 
 
 class ParkingAnalyzerTest {
-
     @Test
     public void whenCarHasSizeOneThenGetTwentyFiveFreePlacesForParking() {
         int[][] parkingPlace = new int[5][5];

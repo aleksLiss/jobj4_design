@@ -3,7 +3,6 @@ package ru.job4j.ood.lsp.parking.car;
 import java.util.Objects;
 
 public abstract class Car implements Drive {
-
     private int size;
 
     public Car(int size) {

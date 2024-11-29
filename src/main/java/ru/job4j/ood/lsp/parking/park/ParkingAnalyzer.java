@@ -3,7 +3,6 @@ package ru.job4j.ood.lsp.parking.park;
 import ru.job4j.ood.lsp.parking.car.Car;
 
 public class ParkingAnalyzer implements Analyzer {
-
     private ParkingExample parkingEx;
 
     public ParkingAnalyzer(ParkingExample parkingEx) {

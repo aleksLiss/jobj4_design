@@ -3,7 +3,6 @@ package ru.job4j.ood.lsp.parking.park;
 import ru.job4j.ood.lsp.parking.car.Car;
 
 public class ParkingExample extends Parking implements Park {
-
     public ParkingExample(int[][] parking) {
         super(parking);
     }

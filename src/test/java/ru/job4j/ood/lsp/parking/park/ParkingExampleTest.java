@@ -7,7 +7,6 @@ import ru.job4j.ood.lsp.parking.car.Car;
 import static org.assertj.core.api.Assertions.*;
 
 class ParkingExampleTest {
-
     @Test
     public void whenParkingIsFullThenGetException() {
         int[][] parkingPlace = new int[3][3];

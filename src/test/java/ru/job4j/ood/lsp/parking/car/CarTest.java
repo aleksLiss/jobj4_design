@@ -5,7 +5,6 @@ import org.junit.jupiter.api.Test;
 import static org.assertj.core.api.Assertions.*;
 
 class CarTest {
-
     @Test
     public void whenCreateNewCarWithSizeEqualsOneThenReturnPassengerCar() {
         Car result = new PassengerCar(1);
