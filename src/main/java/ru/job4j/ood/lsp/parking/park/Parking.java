@@ -1,10 +1,14 @@
 package ru.job4j.ood.lsp.parking.park;
 
-import ru.job4j.ood.lsp.parking.car.Car;
+public abstract class Parking {
 
-public interface Parking {
+    protected int[][] parking;
 
-    void in(Car car);
+    public Parking(int[][] parking) {
+        this.parking = parking;
+    }
 
-    void out(Car car);
+    public int[][] getParking() {
+        return parking;
+    }
 }

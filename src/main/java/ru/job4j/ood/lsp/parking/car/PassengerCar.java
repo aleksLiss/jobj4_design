@@ -8,13 +8,7 @@ public class PassengerCar extends Car {
 
     @Override
     public void go() {
-
+        System.out.println("Passenger car is moving");
     }
-
-    @Override
-    public void stop() {
-
-    }
-
 
 }

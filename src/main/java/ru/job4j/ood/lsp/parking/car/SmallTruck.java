@@ -8,11 +8,6 @@ public class SmallTruck extends Car {
 
     @Override
     public void go() {
-
-    }
-
-    @Override
-    public void stop() {
-
+        System.out.println("Small truck is moving");
     }
 }

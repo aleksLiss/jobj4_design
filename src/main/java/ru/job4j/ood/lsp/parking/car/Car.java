@@ -7,14 +7,14 @@ public abstract class Car implements Drive {
     private int size;
 
     public Car(int size) {
-        checkSize(size);
-        this.size = size;
+        this.size = checkSize(size);
     }
 
-    private void checkSize(int size) {
+    private int checkSize(int size) {
         if (size < 1) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("Size auto must be great than zero");
         }
+        return size;
     }
 
     @Override
@@ -29,5 +29,9 @@ public abstract class Car implements Drive {
     @Override
     public int hashCode() {
         return Objects.hashCode(size);
+    }
+
+    public int getSize() {
+        return size;
     }
 }

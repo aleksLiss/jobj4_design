@@ -27,12 +27,14 @@ class CarTest {
     @Test
     public void whenCreateNewCarWithSizeEqualsZeroThenGetException() {
         assertThatThrownBy(() -> new PassengerCar(0))
-                .isInstanceOf(IllegalArgumentException.class);
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage("Size auto must be great than zero");
     }
 
     @Test
     public void whenCreateNewCarWithSizeLessThatZeroThenGetException() {
         assertThatThrownBy(() -> new PassengerCar(-1))
-                .isInstanceOf(IllegalArgumentException.class);
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage("Size auto must be great than zero");
     }
 }
