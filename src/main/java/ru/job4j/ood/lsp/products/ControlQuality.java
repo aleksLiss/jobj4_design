@@ -13,11 +13,20 @@ import java.util.Map;
 public class ControlQuality {
 
     private final Map<String, Store> storeMap;
+
     private final CalculateDiscounter calculateDiscounter;
 
     public ControlQuality(Map<String, Store> storeMap) {
         this.storeMap = storeMap;
         this.calculateDiscounter = new CalculatorNewPriceFood();
+    }
+
+
+    public void resort() {
+        List<Food> foods = storeMap.get("warehouse").getAll();
+        foods.addAll(storeMap.get("shop").getAll());
+        foods.addAll(storeMap.get("trash").getAll());
+        calculateQuality(foods);
     }
 
     public void calculateQuality(List<Food> foods) {
